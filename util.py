@@ -4,9 +4,11 @@ def lines(file):
 
 def blocks(file):
     block=[]
-    for line in lines(file):
+#    for line in lines(file):
+    for line in file:
         if line.strip():
             block.append(line)
         elif block:
             yield ' '.join(block).strip()
             block=[]
+    yield ' '.join(block).strip()
