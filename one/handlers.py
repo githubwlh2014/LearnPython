@@ -1,9 +1,5 @@
 class Handler:
-    """
-    处理从Parser调用的方法对象。
-    这个解析器会在每个块的开始部分调用start()和end()方法，使用合适的
-    块名作为参数。
-    """
+
     def callback(self,prefix,name,*args):
         method=getattr(self,prefix+name,None)
         if callable(method):return method(*args)
@@ -22,9 +18,6 @@ class Handler:
         return substitution
 
 class HTMLRenderer(Handler):
-    """
-    用于生成HTML的具体处理程序
-    """
 
     def start_document(self):
         print '<html><head><title>...</title></head><body>'
