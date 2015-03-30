@@ -12,9 +12,9 @@ class Dispatcher(ContentHandler):
         if callable(method):args=()
         else:
             method=getattr(self,dname,None)
-            args=name
+            args=name,
 
-        if prefix == ' start': args+=attrs
+        if prefix == 'start': args+=attrs,
         if callable(method):method(*args)
 
     def startElement(self,name,attrs):
@@ -66,7 +66,7 @@ class WebsiteConstructor(Dispatcher):
         self.writeFooter()
         self.out.close()
 
-    def writeHeader(self):
+    def writeHeader(self,title):
         self.out.write('<html>\n</head>\n  <title>')
         self.out.write(title)
         self.out.write('</title>\n </head>\n <body>\n')
